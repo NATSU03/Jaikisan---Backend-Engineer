@@ -1,9 +1,11 @@
-const customerModel= require("../models/customerModel")
+const customermodel = require("../models/customerModel")
+
 
 const createCustomers= async function(req,res){
     try{
+
         let data= req.body
-        let createCustomer= await customerModel.create(data)
+        let createCustomer = await customermodel.create(data)
         return res.status(201).send({status:true,data:createCustomer})
 
     }
@@ -17,7 +19,7 @@ const createCustomers= async function(req,res){
 
 const getCustomersData= async function(req,res){
     try{
-        let getData= await customerModel.find({status:"ACTIVE"})
+        let getData= await customermodel.find({status:"ACTIVE"})
         
         return res.status(200).send({status:true,data:getData})
 
@@ -35,7 +37,7 @@ const deleteCustomersData= async function(req,res){
     try{
         let CustomerId= req.params.CustomerId
        
-        let deleteData= await customerModel.findOneAndUpdate({_id:CustomerId},{isDeleted:true,deletedAt:Date.now()},{new:true})
+        let deleteData= await customermodel.findOneAndUpdate({_id:CustomerId},{isDeleted:true,deletedAt:Date.now()},{new:true})
 
         if (!deleteData){return res.status(404).send({status:false,msg:"customers data is either deleted or doesn't exit "})}
 

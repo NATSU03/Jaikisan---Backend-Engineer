@@ -25,7 +25,7 @@ const productSchema = new mongoose.Schema({
         trim: true
     },
     address: { 
-        type: Number,
+        type: String,
         trim: true
     },
     cutomerID: { 
